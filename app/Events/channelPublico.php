@@ -30,7 +30,7 @@ class channelPublico implements ShouldBroadcast
     {
         return [
             'mensagem' => $this->mensagem
-        ]
+        ];
     }
 
     /**
