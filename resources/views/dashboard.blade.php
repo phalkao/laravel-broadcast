@@ -36,4 +36,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var publico = document.getElementById("publico");
+
+        Echo.channel('channel-publico')
+            .listen('channelPublico', (e) =>{
+                publico.innerHTML += "<div class='alert alert-success' >" + e.mensagem + '</div>';            
+            });
+    </script>
+
+
 </x-app-layout>
