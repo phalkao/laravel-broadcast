@@ -42,7 +42,8 @@
 
         Echo.channel('channel-publico')
             .listen('channelPublico', (e) =>{
-                publico.innerHTML += "<div class='alert alert-success' >" + e.mensagem + '</div>';            
+                publico.innerHTML += "<div class='alert alert-success' >" + e.mensagem + '</div>';        
+                console.log(e.mensagem);    
             });
     </script>
 

@@ -12,8 +12,8 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-        depends_on: 
-            - redis
+        # depends_on: 
+        #     - redis
         networks: 
             - laravel-network
     
@@ -24,6 +24,7 @@ services:
         restart: unless-stopped
         ports: 
             - "8989:80"
+            - "6001:6001"
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
@@ -56,17 +57,17 @@ services:
         volumes: 
             - ./:/var/www
         depends_on: 
-            - redis
+            # - redis
             - app
         networks: 
             - laravel-network
 
     # redis
-    redis:
-        container_name: laravel-redis
-        image: redis:latest
-        networks: 
-            - laravel-network
+    # redis:
+    #     container_name: laravel-redis
+    #     image: redis:latest
+    #     networks: 
+    #         - laravel-network
 
 networks: 
     laravel-network:

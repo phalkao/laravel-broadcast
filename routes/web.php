@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\channelPublico;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('insert.user/{name}/{email}', [UserController::class, 'store'])->name('insert.user');
+
 Route::get('broadcast/{msg}', function($msg){
     broadcast(new channelPublico($msg));
 });
-
 
 Route::get('/', function () {
     return view('welcome');
