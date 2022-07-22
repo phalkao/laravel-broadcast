@@ -3,8 +3,6 @@
 use App\Events\channelPublico;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Mail\newBroadcastMail;
-use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +28,8 @@ Route::get('envio-email', function() {
     $user->email = 'phalkao@gmail.com';
 
     // return new newBroadcastMail($user);
-    Mail::send(new newBroadcastMail($user));
+    
+    \App\Jobs\newBroadcastMail::dispatch($user)->delay(now()->addSeconds(15)); 
 
 });
 
