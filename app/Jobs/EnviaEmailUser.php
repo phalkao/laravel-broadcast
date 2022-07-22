@@ -35,7 +35,7 @@ class EnviaEmailUser implements ShouldQueue
      */
     public function handle()
     {
-        // $message = "teste";
+        $message = "teste";
 
         Mail::send('emails', ['dados' => $this->users], function ($message){
             $message->from('phalkao@gmail.com', 'Sistema - Broadcast');

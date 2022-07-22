@@ -38,7 +38,8 @@ class UserController extends Controller
     {
         $user = new User();
         
-        $user->email = $request->email;
+        $user->email = "{$request->name}@selvagem.com";
+        // $request->email;
         $user->password = bcrypt('12356789');
         $user->name = $request->name;
         $user->save();

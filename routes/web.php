@@ -1,8 +1,10 @@
-<?php
+<?php 
 
 use App\Events\channelPublico;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Mail\newBroadcastMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,17 @@ Route::get('insert.user/{name}/{email}', [UserController::class, 'store'])->name
 
 Route::get('broadcast/{msg}', function($msg){
     broadcast(new channelPublico($msg));
+});
+
+Route::get('envio-email', function() {
+
+    $user = new stdClass();
+    $user->name = 'Julio César';
+    $user->email = 'phalkao@gmail.com';
+
+    // return new newBroadcastMail($user);
+    Mail::send(new newBroadcastMail($user));
+
 });
 
 Route::get('/', function () {
