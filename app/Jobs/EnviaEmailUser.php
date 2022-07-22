@@ -37,11 +37,13 @@ class EnviaEmailUser implements ShouldQueue
     {
         $message = "teste";
 
-        Mail::send('emails', ['dados' => $this->users], function ($message){
+        Mail::send('emails1', ['dados' => $this->users], function ($message){
             $message->from('phalkao@gmail.com', 'Sistema - Broadcast');
-            $message->to($this->user->email, $this->user->name);
+            $message->to('phalkao@gmail.com', 'julio');
             $message->subject('Enviando e-mail de teste.');
         });
+
+        return $message;
     }
 
     public function failed(Throwable $exception)
